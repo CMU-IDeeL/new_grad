@@ -34,10 +34,10 @@ def test_softmaxXentropy():
     np.random.seed(0)
     autograd = autograd_engine.Autograd()
 
-    l1 = nn.Linear(5, 5)
+    l1 = nn.Linear(5, 5, autograd)
     x = np.random.random((1, 5))  # just use batch size 1 since broadcasting is not written yet
     y = np.array([[0., 0., 1., 0., 0.]]) # 1. must be in same location as index for torch_y
-    l1_out = l1(x, autograd)
+    l1_out = l1(x)
 
     # Torch input
     torch_l1 = torch.nn.Linear(5,5)
@@ -47,9 +47,9 @@ def test_softmaxXentropy():
     torch_y = torch.LongTensor(np.array([2])) # this value must be same as 1 index in y
     torch_l1_out = torch_l1(torch_x)
 
-    test_loss = nn.SoftmaxCrossEntropy()
-    a1_out = test_loss(y, l1_out, autograd)
-    test_loss.backward(autograd)
+    test_loss = nn.SoftmaxCrossEntropy(autograd)
+    a1_out = test_loss(y, l1_out)
+    test_loss.backward()
 
     torch_loss = torch.nn.CrossEntropyLoss()
     print(torch_y, torch_l1_out)

@@ -18,7 +18,7 @@ class MLP(object):
     """
 
     def __init__(self, input_size, output_size, hiddens, activations,
-                 criterion, lr, autograd, momentum=0.0):
+                 criterion, lr, autograd_engine, momentum=0.0):
 
         # Don't change this -->
         self.train_mode = True
@@ -29,7 +29,7 @@ class MLP(object):
         self.criterion = criterion
         self.lr = lr
         self.momentum = momentum
-        self.autograd = autograd # NOTE: Use this Autograd object for backward
+        self.autograd_engine = autograd_engine # NOTE: Use this Autograd object for backward
         self.linear_layers = None
 
     def forward(self, x):

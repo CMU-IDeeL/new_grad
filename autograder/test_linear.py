@@ -10,10 +10,10 @@ def test_linear_layer():
     np.random.seed(0)
     autograd = autograd_engine.Autograd()
 
-    l1 = nn.Linear(5, 5)
+    l1 = nn.Linear(5, 5, autograd)
     x = np.random.random((1, 5))  # just use batch size 1 since broadcasting is not written yet
 
-    l1_out = l1(x, autograd)
+    l1_out = l1(x)
     autograd.backward(1)
     
     torch_l1 = torch.nn.Linear(5, 5)
@@ -32,9 +32,9 @@ def test_linear_skip():
     autograd = autograd_engine.Autograd()
 
     autograd.zero_grad()
-    l1 = nn.Linear(5, 5)
+    l1 = nn.Linear(5, 5, autograd)
     x = np.random.random((1, 5))
-    l1_out = l1(x, autograd)
+    l1_out = l1(x)
     output = l1_out + x
     autograd.add_operation(inputs=[l1_out, x], output=output, gradients_to_update=[None, None],
                       backward_operation=add_backward)

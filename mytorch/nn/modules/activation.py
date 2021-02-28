@@ -16,13 +16,14 @@ class Activation(object):
     # Note that these activation functions are scalar operations. I.e, they
     # shouldn't change the shape of the input.
 
-    def __init__(self):
+    def __init__(self, autograd_engine):
         self.state = None
+        self.autograd_engine = autograd_engine
 
-    def __call__(self, x, autograd):
-        return self.forward(x, autograd)
+    def __call__(self, x):
+        return self.forward(x)
 
-    def forward(self, x, autograd):
+    def forward(self, x):
         raise NotImplementedError
 
 class Identity(Activation):
@@ -33,29 +34,33 @@ class Identity(Activation):
 
     # This class is a gimme as it is already implemented for you as an example
 
-    def __init__(self):
+    def __init__(self, autograd_engine):
         super(Identity, self).__init__()
+        self.autograd_engine = autograd_engine
 
-    def forward(self, x, autograd):
+    def forward(self, x):
         raise NotImplementedError
 
 class Sigmoid(Activation):
-    def __init__(self):
+    def __init__(self, autograd_engine):
         super(Sigmoid, self).__init__()
+        self.autograd_engine = autograd_engine
 
-    def forward(self, x, autograd):
+    def forward(self, x):
         raise NotImplementedError
 
 class Tanh(Activation):
-    def __init__(self):
+    def __init__(self, autograd_engine):
         super(Tanh, self).__init__()
+        self.autograd_engine = autograd_engine
 
-    def forward(self, x, autograd):
+    def forward(self, x):
         raise NotImplementedError
 
 class ReLU(Activation):
-    def __init__(self):
+    def __init__(self, autograd_engine):
         super(ReLU, self).__init__()
+        self.autograd_engine = autograd_engine
 
-    def forward(self, x, autograd):
+    def forward(self, x):
         raise NotImplementedError

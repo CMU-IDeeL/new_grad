@@ -2,8 +2,8 @@ import numpy as np
 from mytorch.nn.functional import matmul_backward, add_backward, sub_backward, mul_backward, div_backward
 
 class MSELoss:
-    def __init__(self, autograd):
-        self.autograd = autograd
+    def __init__(self, autograd_engine):
+        self.autograd_engine = autograd_engine
         self.loss_val = None
 
     def __call__(self, y, y_hat):
@@ -48,20 +48,21 @@ class MSELoss:
 # Hint: To simplify things you can just make a backward for this loss and not
 # try to do it for every operation.
 class SoftmaxCrossEntropy:
-    def __init__(self):
+    def __init__(self, autograd_engine):
         self.loss_val = None
         self.y_grad_placeholder = None
+        self.autograd_engine = autograd_engine
 
-    def __call__(self, y, y_hat, autograd):
-        return self.forward(y, y_hat, autograd)
+    def __call__(self, y, y_hat):
+        return self.forward(y, y_hat)
 
-    def forward(self, y, y_hat, autograd):
+    def forward(self, y, y_hat):
         """
             Refer to the comments in MSELoss
         """
         raise NotImplementedError
 
 
-    def backward(self, autograd):
-        # You can call autograd's backward here or in the mlp.
+    def backward(self):
+        # You can call autograd's backward here OR in the mlp.
         raise NotImplementedError

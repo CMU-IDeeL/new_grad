@@ -2,7 +2,7 @@ import numpy as np
 from mytorch.nn.functional import matmul_backward, add_backward
 
 class Linear():
-    def __init__(self, in_features, out_features):
+    def __init__(self, in_features, out_features, autograd_engine):
         self.W = np.random.uniform(-np.sqrt(1 / in_features), np.sqrt(1 / in_features),
                                    size=(in_features, out_features))  # flip this to out x in to mimic pytorch
         self.b = np.random.uniform(-np.sqrt(1 / in_features), np.sqrt(1 / in_features),
@@ -10,18 +10,18 @@ class Linear():
         self.dW = np.zeros(self.W.shape)
         self.db = np.zeros(self.b.shape)
 
-    def __call__(self, x, autograd_engine):
-        return self.forward(x, autograd_engine)
+        self.autograd_engine = autograd_engine
+
+    def __call__(self, x):
+        return self.forward(x)
 
     
-    def forward(self, x, autograd_engine):
+    def forward(self, x):
         """
             Computes the affine transformation forward pass of the Linear Layer
 
             Args:
                 - x (np.ndarray): the input array,
-                - autograd_engine: an instance of Autograd to record the forward
-                    operations on
 
             Returns:
                 - (np.ndarray), the output of this forward computation.

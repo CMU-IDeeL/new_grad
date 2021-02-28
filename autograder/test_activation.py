@@ -13,9 +13,9 @@ def test_identity():
     np.random.seed(0)
     autograd = autograd_engine.Autograd()
 
-    l1 = nn.Linear(5, 5)
+    l1 = nn.Linear(5, 5, autograd)
     x = np.random.random((1, 5))  # just use batch size 1 since broadcasting is not written yet
-    l1_out = l1(x, autograd)
+    l1_out = l1(x)
     # Torch input
     torch_l1 = torch.nn.Linear(5,5)
     torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W.T))  # note transpose here, probably should standardize
@@ -23,8 +23,8 @@ def test_identity():
     torch_x = torch.DoubleTensor(x)
     torch_l1_out = torch_l1(torch_x)
     torch_act = torch.nn.Identity()
-    test_act = nn.Identity()
-    a1_out = test_act(l1_out, autograd)
+    test_act = nn.Identity(autograd)
+    a1_out = test_act(l1_out)
     autograd.backward(1)
     torch_a1_out = torch_act(torch_l1_out)
     torch_a1_out.sum().backward()
@@ -39,9 +39,9 @@ def test_sigmoid():
     np.random.seed(0)
     autograd = autograd_engine.Autograd()
 
-    l1 = nn.Linear(5, 5)
+    l1 = nn.Linear(5, 5, autograd)
     x = np.random.random((1, 5))  # just use batch size 1 since broadcasting is not written yet
-    l1_out = l1(x, autograd)
+    l1_out = l1(x)
     # Torch input
     torch_l1 = torch.nn.Linear(5,5)
     torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W.T))  # note transpose here, probably should standardize
@@ -49,8 +49,8 @@ def test_sigmoid():
     torch_x = torch.DoubleTensor(x)
     torch_l1_out = torch_l1(torch_x)
     torch_act = torch.nn.Sigmoid()
-    test_act = nn.Sigmoid()
-    a1_out = test_act(l1_out, autograd)
+    test_act = nn.Sigmoid(autograd)
+    a1_out = test_act(l1_out)
     autograd.backward(1)
     torch_a1_out = torch_act(torch_l1_out)
     torch_a1_out.sum().backward()
@@ -65,9 +65,9 @@ def test_tanh():
     np.random.seed(0)
     autograd = autograd_engine.Autograd()
 
-    l1 = nn.Linear(5, 5)
+    l1 = nn.Linear(5, 5, autograd)
     x = np.random.random((1, 5))  # just use batch size 1 since broadcasting is not written yet
-    l1_out = l1(x, autograd)
+    l1_out = l1(x)
     # Torch input
     torch_l1 = torch.nn.Linear(5,5)
     torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W.T))  # note transpose here, probably should standardize
@@ -75,8 +75,8 @@ def test_tanh():
     torch_x = torch.DoubleTensor(x)
     torch_l1_out = torch_l1(torch_x)
     torch_act = torch.nn.Tanh()
-    test_act = nn.Tanh()
-    a1_out = test_act(l1_out, autograd)
+    test_act = nn.Tanh(autograd)
+    a1_out = test_act(l1_out)
     autograd.backward(1)
     torch_a1_out = torch_act(torch_l1_out)
     torch_a1_out.sum().backward()
@@ -91,9 +91,9 @@ def test_relu():
     np.random.seed(0)
     autograd = autograd_engine.Autograd()
 
-    l1 = nn.Linear(5, 5)
+    l1 = nn.Linear(5, 5, autograd)
     x = np.random.random((1, 5))  # just use batch size 1 since broadcasting is not written yet
-    l1_out = l1(x, autograd)
+    l1_out = l1(x)
     # Torch input
     torch_l1 = torch.nn.Linear(5,5)
     torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W.T))  # note transpose here, probably should standardize
@@ -101,8 +101,8 @@ def test_relu():
     torch_x = torch.DoubleTensor(x)
     torch_l1_out = torch_l1(torch_x)
     torch_act = torch.nn.ReLU()
-    test_act = nn.ReLU()
-    a1_out = test_act(l1_out, autograd)
+    test_act = nn.ReLU(autograd)
+    a1_out = test_act(l1_out)
     autograd.backward(1)
     torch_a1_out = torch_act(torch_l1_out)
     torch_a1_out.sum().backward()

@@ -33,7 +33,7 @@ Once you have completed all the key components of the assignment, you will be ab
 3. Calculate the loss, and kick-off backprop
 ```Python3
 >>> y_hat = activation1(linear1(x))
->>> loss(y, y_hat)
+>>> loss_val = loss(y, y_hat)
 >>> loss.backward()
 ```
  -------------------------
