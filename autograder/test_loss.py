@@ -8,27 +8,6 @@ from mytorch.nn.functional import *
     
 # Activation Layer test - for Sigmoid, Tanh and ReLU
 
-# def test_SGD_mseloss():
-#     np.random.seed(0)
-#     autograd = autograd_engine.Autograd()
-
-#     l1 = nn.Linear(5, 5)
-#     x = np.random.random((1, 5))
-#     optimizer = optim.SGD(autograd)
-
-#     l1_out = l1(x, autograd)
-#     autograd.backward(1)
-
-#     y_hat = np.ones_like(l1_out)
-#     mse_loss = nn.MSELoss(autograd)
-
-#     mse_loss(l1_out, y_hat)
-#     mse_loss.backward()
-#     optimizer.step()
-#     optimizer.zero_grad()
-#     autograd.backward(1)
-#     return True
-
 def test_softmaxXentropy():
     # Test input
     np.random.seed(0)
