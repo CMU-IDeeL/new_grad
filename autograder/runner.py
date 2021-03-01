@@ -12,6 +12,7 @@ from test_activation import *
 from test_loss import *
 
 tests = [
+    # funcitonals will be 0.5
     {
         'name': '0.1 - Autograd Add Operation',
         'autolab': 'Autograd Add Operation',

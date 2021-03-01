@@ -50,8 +50,14 @@ class Autograd():
             Args:
                 - inputs: operation inputs (numpy.ndarray)
                 - outputs: operation output (numpy.ndarray)
-                - gradients_to_update: parameter gradients if for parameter of ,
+                - gradients_to_update: parameter gradients if for parameter of
                             network or None (numpy.ndarray, None)
+                    NOTE: Given the linear layer as shown in the writeup section
+                        2.4 there are 2 kinds of inputs to an operation:
+                        1) one that requires gradients to be internally tracked
+                            ex. input (X) to a layer
+                        2) one that requires gradient to be externally tracked
+                            ex. weight matrix (W) of a layer (so we can track dW) 
                 - backward_operation: backward function for nn/functional.py. 
                             When passing a function you don't need inputs or parentheses.
 

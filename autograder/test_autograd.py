@@ -45,17 +45,20 @@ def test_backward():
         backward_operation=F.add_backward
     )
 
-    y2 = np.random.randn(1, 5)
-    dy2 = np.zeros_like(y2)
-    z2 = z1 * y2
-
-    autograd_engine.add_operation(
-        inputs=[z1, y2],
-        output=z2,
-        gradients_to_update=[None, dy2],
-        backward_operation=F.mul_backward
-    )
+    assert len(autograd_engine.operation_list) == 1
+    assert len(autograd_engine.memory_buffer.memory)==2
 
     autograd_engine.backward(1)
-    # TODO: finish checks here
+
+    torch_x1 = torch.DoubleTensor(torch.tensor(x1, requires_grad=True))
+    torch_y1 = torch.DoubleTensor(torch.tensor(y1, requires_grad=True))
+    torch_x1.retain_grad()
+    torch_y1.retain_grad()
+
+    torch_z1 = torch_x1 + torch_y1
+    torch_z1.sum().backward()
+
+    compare_np_torch(z1, torch_z1)
+    compare_np_torch(dy1, torch_y1.grad)
+    compare_np_torch(autograd_engine.memory_buffer.get_param(x1), torch_x1.grad)
     return True
