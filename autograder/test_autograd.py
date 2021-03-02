@@ -1,8 +1,8 @@
 import numpy as np
-
+import torch
 from mytorch.autograd_engine import Autograd, Operation
 import mytorch.nn.functional as F
-
+from helpers import compare_np_torch
 
 def test_add_operation():
     autograd_engine = Autograd()
@@ -49,6 +49,7 @@ def test_backward():
     assert len(autograd_engine.memory_buffer.memory)==2
 
     autograd_engine.backward(1)
+    dy1 = autograd_engine.memory_buffer.get_param(y1)
 
     torch_x1 = torch.DoubleTensor(torch.tensor(x1, requires_grad=True))
     torch_y1 = torch.DoubleTensor(torch.tensor(y1, requires_grad=True))

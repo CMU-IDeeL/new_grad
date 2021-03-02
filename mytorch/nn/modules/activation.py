@@ -35,16 +35,14 @@ class Identity(Activation):
     # This class is a gimme as it is already implemented for you as an example
 
     def __init__(self, autograd_engine):
-        super(Identity, self).__init__()
-        self.autograd_engine = autograd_engine
+        super(Identity, self).__init__(autograd_engine)
 
     def forward(self, x):
         raise NotImplementedError
 
 class Sigmoid(Activation):
     def __init__(self, autograd_engine):
-        super(Sigmoid, self).__init__()
-        self.autograd_engine = autograd_engine
+        super(Sigmoid, self).__init__(autograd_engine)
 
     def forward(self, x):
         raise NotImplementedError
@@ -59,8 +57,7 @@ class Tanh(Activation):
 
 class ReLU(Activation):
     def __init__(self, autograd_engine):
-        super(ReLU, self).__init__()
-        self.autograd_engine = autograd_engine
+        super(ReLU, self).__init__(autograd_engine)
 
     def forward(self, x):
         raise NotImplementedError

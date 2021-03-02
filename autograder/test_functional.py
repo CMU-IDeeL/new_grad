@@ -4,7 +4,7 @@ NOTE: These test cases do not check the correctness of your solution,
       You are free to add your own test cases for checking correctness
 """
 
-import numypy as np
+import numpy as np
 
 from mytorch.nn.functional import *
 
@@ -37,26 +37,26 @@ def test_mul_backward():
         return True
 
 def test_div_backward():
-    grad_output = np.zeros((5, 5))
-    a = np.zeros((5, 5))
-    b = np.zeros((1, 5))
+    grad_output = np.ones((5, 5))
+    a = np.ones((5, 5))
+    b = np.ones((1, 5))
     if div_backward(grad_output, a, b):
         return True
 
 def test_log_backward():
     grad_output = np.zeros((5, 5))
-    a = np.zeros((5, 5))
-    if log_backward(grad_output, a):
+    a = np.ones((5, 5))
+    if log_backward(grad_output, a) is not None:
         return True
 
 def test_exp_backward():
     grad_output = np.zeros((5, 5))
-    a = np.zeros((5, 5))
-    if exp_backward(grad_output, a):
+    a = np.ones((5, 5))
+    if exp_backward(grad_output, a) is not None:
         return True
 
 def test_pow_backward():
     grad_output = np.zeros((5, 5))
-    a = np.zeros((5, 5))
-    if pow_backward(grad_output, a):
+    a = np.ones((5, 5))
+    if pow_backward(grad_output, a) is not None:
         return True
