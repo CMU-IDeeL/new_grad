@@ -51,7 +51,7 @@ def bias_init(x):
 def visualize(outpath):
     # Configure the training visualization process below
     # Change these hyperparameters around to experiment with your implementation
-    epochs = 200
+    epochs = 5
     batch_size = 1
     thisdir = os.path.dirname(__file__)
     savepath = outpath

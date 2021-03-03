@@ -55,7 +55,9 @@ class MLP(object):
         return (np.argmax(self.output, axis = 1) != np.argmax(labels, axis = 1)).sum()
 
     def total_loss(self, labels):
-        return self.criterion(self.output, labels).sum()
+        raise NotImplementedError
+        # NOTE: Put the inputs in the correct order for the criterion
+        # return self.criterion().sum()
 
     def __call__(self, x):
         return self.forward(x)
