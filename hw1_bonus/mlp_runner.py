@@ -71,9 +71,9 @@ def visualize(outpath):
 
     autograd = autograd_engine.Autograd()
     #(self, input_size, output_size, hiddens, activations, criterion, lr, autograd, momentum=0.0):
-    mlp = MLP(784, 10, [32, 32, 32], [nn.Sigmoid(), nn.Sigmoid(), nn.Sigmoid(), nn.Identity()],
+    mlp = MLP(784, 10, [32, 32, 32], [nn.Sigmoid(autograd), nn.Sigmoid(autograd), nn.Sigmoid(autograd), nn.Identity(autograd)],
                  #np.random.randn, bias_init,
-                 nn.SoftmaxCrossEntropy(),
+                 nn.SoftmaxCrossEntropy(autograd),
                  1e-3, autograd, momentum=0.856)
     visualize_training_statistics(mlp, dset, epochs, batch_size, savepath)
     print("Saved output to {}".format(savepath))

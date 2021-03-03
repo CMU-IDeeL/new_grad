@@ -9,6 +9,9 @@ class Linear():
                                    size=(1, out_features))  # just change this to 1-d after implementing broadcasting
         self.dW = np.zeros(self.W.shape)
         self.db = np.zeros(self.b.shape)
+                
+        self.momentum_W = np.zeros(self.W.shape)
+        self.momentum_b = np.zeros(self.b.shape)
 
         self.autograd_engine = autograd_engine
 

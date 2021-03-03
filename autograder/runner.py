@@ -4,6 +4,7 @@ import numpy as np
 # this file from inside the autograder directory.
 import sys
 sys.path.append('./..')
+sys.path.append('mytorch')
 
 import mytorch
 from test_linear import *
