@@ -37,3 +37,17 @@ def exp_backward(grad_output,a):
 def pow_backward(grad_output, a):
     raise NotImplementedError
 
+def max_backward(grad_output, a):
+    pass
+
+def sum_backward(grad_output, a):
+    pass
+
+def SoftmaxCrossEntropy_backward(grad_output, a):
+    """
+    NOTE: Since the gradient of the Softmax CrossEntropy Loss is
+          is straightforward to compute, you may choose to implement
+          this directly rather than rely on the backward functions of
+          more primitive operations.
+    """
+    pass
