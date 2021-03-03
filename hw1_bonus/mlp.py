@@ -66,8 +66,6 @@ class MLP(object):
     def eval(self):
         self.train_mode = False
 
-# NOTE: Batchsize is 1 for this bonus unless you support 
-# broadcasting/unbroadcasting then you can change this in the mlp_runner.py
 def get_training_stats(mlp, dset, nepochs, batch_size=1):
     train, val, _ = dset
     trainx, trainy = train
@@ -86,10 +84,15 @@ def get_training_stats(mlp, dset, nepochs, batch_size=1):
         # Per epoch setup ...
         for b in range(0, len(trainx)):
             # Train ...
-            # Call the MLP's loss.backward to train.
+            # NOTE: Batchsize is 1 for this bonus unless you support 
+            # broadcasting/unbroadcasting then you can change this in the mlp_runner.py
+            x = np.expand_dims(trainx[b], 0)
+            y = np.expand_dims(trainy[b], 0)
 
         for b in range(0, len(valx)):
             # Val ...
+            x = np.expand_dims(valx[b], 0)
+            y = np.expand_dims(valy[b], 0)
 
         # Accumulate data...
 

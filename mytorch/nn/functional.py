@@ -34,6 +34,4 @@ def log_backward(grad_output, a):
 def exp_backward(grad_output,a):
     raise NotImplementedError
 
-def pow_backward(grad_output, a):
-    raise NotImplementedError
 
