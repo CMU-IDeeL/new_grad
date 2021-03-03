@@ -17,13 +17,13 @@ tests = [
         'name': '0.1 - Autograd Add Operation',
         'autolab': 'Autograd Add Operation',
         'handler': test_add_operation,
-        'value': 4,
+        'value': 5,
     },
     {
         'name': '0.2 - Autograd Backward',
         'autolab': 'Autograd Backward',
         'handler': test_backward,
-        'value': 4,
+        'value': 5,
     },
     {
         'name': '1.1 - Functional Backward - Multiply',
@@ -59,12 +59,6 @@ tests = [
         'name': '1.6 - Functional Backward - Exp',
         'autolab': 'Functional Backward - Exp',
         'handler': test_exp_backward,
-        'value': 1,
-    },
-    {
-        'name': '1.7 - Functional Backward - Pow',
-        'autolab': 'Functional Backward - Pow',
-        'handler': test_pow_backward,
         'value': 1,
     },
     {
@@ -143,7 +137,7 @@ tests = [
         'name': '4.1 - SoftmaxCrossEntropy Loss (Autograd) Forward',
         'autolab': 'SoftmaxCrossEntropy Loss (Autograd) Forward',
         'handler': test_softmaxXentropy_forward,
-        'value': 2,
+        'value': 1,
     },
     {
         'name': '4.2 - SoftmaxCrossEntropy Loss (Autograd) Backward',
