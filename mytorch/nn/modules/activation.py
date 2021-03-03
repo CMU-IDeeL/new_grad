@@ -49,7 +49,7 @@ class Sigmoid(Activation):
 
 class Tanh(Activation):
     def __init__(self, autograd_engine):
-        super(Tanh, self).__init__()
+        super(Tanh, self).__init__(autograd_engine)
         self.autograd_engine = autograd_engine
 
     def forward(self, x):
