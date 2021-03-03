@@ -5,9 +5,7 @@ from mytorch import autograd_engine
 import mytorch.nn as nn
 from helpers import *
 from mytorch.nn.functional import *
-    
-# Activation Layer test - for Sigmoid, Tanh and ReLU
-
+   
 
 def test_softmaxXentropy_forward():
     # Test input
