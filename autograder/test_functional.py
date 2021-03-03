@@ -54,9 +54,3 @@ def test_exp_backward():
     a = np.ones((5, 5))
     if exp_backward(grad_output, a) is not None:
         return True
-
-def test_pow_backward():
-    grad_output = np.zeros((5, 5))
-    a = np.ones((5, 5))
-    if pow_backward(grad_output, a) is not None:
-        return True
