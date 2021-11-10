@@ -55,7 +55,9 @@ class MLP(object):
         return (np.argmax(self.output, axis = 1) != np.argmax(labels, axis = 1)).sum()
 
     def total_loss(self, labels):
-        return self.criterion(self.output, labels).sum()
+        raise NotImplementedError
+        # NOTE: Put the inputs in the correct order for the criterion
+        # return self.criterion().sum()
 
     def __call__(self, x):
         return self.forward(x)
@@ -67,6 +69,8 @@ class MLP(object):
         self.train_mode = False
 
 def get_training_stats(mlp, dset, nepochs, batch_size=1):
+    # NOTE: Because the batch size is 1 (unless you support
+    # broadcasting) the MLP training will be slow.
     train, val, _ = dset
     trainx, trainy = train
     valx, valy = val
@@ -85,7 +89,8 @@ def get_training_stats(mlp, dset, nepochs, batch_size=1):
         for b in range(0, len(trainx)):
             # Train ...
             # NOTE: Batchsize is 1 for this bonus unless you support 
-            # broadcasting/unbroadcasting then you can change this in the mlp_runner.py
+            # broadcasting/unbroadcasting then you can change this in
+            # the mlp_runner.py
             x = np.expand_dims(trainx[b], 0)
             y = np.expand_dims(trainy[b], 0)
 

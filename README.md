@@ -1,6 +1,8 @@
 # new_grad
 
 ### Introduction
+This is an optional bonus homework assignment for the course 11-485/11-685/11-785 [Introduction to Deep Learning](http://deeplearning.cs.cmu.edu/S21/index.html) at Carnegie Mellon University.
+
 Most modern machine learning and deep learning frameworks rely on a technique called "[Automatic Differentiation](https://en.wikipedia.org/wiki/Automatic_differentiation)" (or Autodiff for short) to compute gradients. In this homework assignment, we introduce a new Autodiff based framework for computing these gradients (called new_grad) with a focus on the backbone of the autodiff framework - the Autograd Engine - without the complexity of dealing with a special "Tensor" class, or the need to perform DFS during the backward pass over the computational graph.
 
 ### Learning Objectives
