@@ -21,7 +21,7 @@ def test_identity_forward():
 
     # Torch input
     torch_l1 = torch.nn.Linear(5,5)
-    torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W.T))  # note transpose here, probably should standardize
+    torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W))  # note transpose here, probably should standardize
     torch_l1.bias = torch.nn.Parameter(torch.DoubleTensor(l1.b))
     torch_x = torch.DoubleTensor(x)
     torch_l1_out = torch_l1(torch_x)
@@ -47,7 +47,7 @@ def test_identity_backward():
 
     # Torch input
     torch_l1 = torch.nn.Linear(5,5)
-    torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W.T))
+    torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W))
     torch_l1.bias = torch.nn.Parameter(torch.DoubleTensor(l1.b))
     torch_x = torch.DoubleTensor(x)
     torch_l1_out = torch_l1(torch_x)
@@ -55,7 +55,7 @@ def test_identity_backward():
     torch_a1_out = torch_act(torch_l1_out)
     torch_a1_out.sum().backward()
 
-    compare_np_torch(l1.dW, torch_l1.weight.grad.T)
+    compare_np_torch(l1.dW, torch_l1.weight.grad)
     compare_np_torch(l1.db, torch_l1.bias.grad)
     
     return True
@@ -74,7 +74,7 @@ def test_sigmoid_forward():
 
     # Torch input
     torch_l1 = torch.nn.Linear(5,5)
-    torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W.T))
+    torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W))
     torch_l1.bias = torch.nn.Parameter(torch.DoubleTensor(l1.b))
     torch_x = torch.DoubleTensor(x)
     torch_l1_out = torch_l1(torch_x)
@@ -100,7 +100,7 @@ def test_sigmoid_backward():
 
     # Torch input
     torch_l1 = torch.nn.Linear(5,5)
-    torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W.T))
+    torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W))
     torch_l1.bias = torch.nn.Parameter(torch.DoubleTensor(l1.b))
     torch_x = torch.DoubleTensor(x)
     torch_l1_out = torch_l1(torch_x)
@@ -108,7 +108,7 @@ def test_sigmoid_backward():
     torch_a1_out = torch_act(torch_l1_out)
     torch_a1_out.sum().backward()
 
-    compare_np_torch(l1.dW, torch_l1.weight.grad.T)
+    compare_np_torch(l1.dW, torch_l1.weight.grad)
     compare_np_torch(l1.db, torch_l1.bias.grad)
     
     return True
@@ -127,7 +127,7 @@ def test_tanh_forward():
 
     # Torch input
     torch_l1 = torch.nn.Linear(5,5)
-    torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W.T))
+    torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W))
     torch_l1.bias = torch.nn.Parameter(torch.DoubleTensor(l1.b))
     torch_x = torch.DoubleTensor(x)
     torch_l1_out = torch_l1(torch_x)
@@ -152,7 +152,7 @@ def test_tanh_backward():
 
     # Torch input
     torch_l1 = torch.nn.Linear(5,5)
-    torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W.T))
+    torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W))
     torch_l1.bias = torch.nn.Parameter(torch.DoubleTensor(l1.b))
     torch_x = torch.DoubleTensor(x)
     torch_l1_out = torch_l1(torch_x)
@@ -160,7 +160,7 @@ def test_tanh_backward():
     torch_a1_out = torch_act(torch_l1_out)
     torch_a1_out.sum().backward()
 
-    compare_np_torch(l1.dW, torch_l1.weight.grad.T)
+    compare_np_torch(l1.dW, torch_l1.weight.grad)
     compare_np_torch(l1.db, torch_l1.bias.grad)
     
     return True
@@ -179,7 +179,7 @@ def test_relu_forward():
 
     # Torch input
     torch_l1 = torch.nn.Linear(5,5)
-    torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W.T))
+    torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W))
     torch_l1.bias = torch.nn.Parameter(torch.DoubleTensor(l1.b))
     torch_x = torch.DoubleTensor(x)
     torch_l1_out = torch_l1(torch_x)
@@ -205,7 +205,7 @@ def test_relu_backward():
 
     # Torch input
     torch_l1 = torch.nn.Linear(5,5)
-    torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W.T))
+    torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W))
     torch_l1.bias = torch.nn.Parameter(torch.DoubleTensor(l1.b))
     torch_x = torch.DoubleTensor(x)
     torch_l1_out = torch_l1(torch_x)
@@ -213,7 +213,7 @@ def test_relu_backward():
     torch_a1_out = torch_act(torch_l1_out)
     torch_a1_out.sum().backward()
     
-    compare_np_torch(l1.dW, torch_l1.weight.grad.T)
+    compare_np_torch(l1.dW, torch_l1.weight.grad)
     compare_np_torch(l1.db, torch_l1.bias.grad)
     
     return True
