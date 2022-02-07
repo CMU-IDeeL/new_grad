@@ -22,6 +22,11 @@ def sub_backward(grad_output, a, b):
 def matmul_backward(grad_output, a, b):
     raise NotImplementedError
 
+def outer_backward(grad_output, a, b):
+    assert (a.shape[0] == 1 or a.ndim == 1)
+    assert (b.shape[0] == 1 or b.ndim == 1)
+    raise NotImplementedError
+
 def mul_backward(grad_output, a, b):
     raise NotImplementedError
 
