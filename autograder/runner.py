@@ -45,19 +45,25 @@ tests = [
         'value': 1,
     },
     {
-        'name': '1.4 - Functional Backward - Divide',
+        'name': '1.4 - Functional Backward - Outer',
+        'autolab': 'Functional Backward - Outer',
+        'handler': test_outer_backward,
+        'value': 1,
+    },
+    {
+        'name': '1.5 - Functional Backward - Divide',
         'autolab': 'Functional Backward - Divide',
         'handler': test_div_backward,
         'value': 1,
     },
     {
-        'name': '1.5 - Functional Backward - Log',
+        'name': '1.6 - Functional Backward - Log',
         'autolab': 'Functional Backward - Log',
         'handler': test_log_backward,
         'value': 1,
     },
     {
-        'name': '1.6 - Functional Backward - Exp',
+        'name': '1.7 - Functional Backward - Exp',
         'autolab': 'Functional Backward - Exp',
         'handler': test_exp_backward,
         'value': 1,
