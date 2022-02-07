@@ -29,6 +29,13 @@ def test_matmul_backward():
     if matmul_backward(grad_output, a, b):
         return True
 
+def test_outer_backward():
+    grad_output = np.zeros((5, 5))
+    a = np.zeros((1, 5))
+    b = np.zeros((1, 5))
+    if outer_backward(grad_output, a, b):
+        return True
+
 def test_mul_backward():
     grad_output = np.zeros((5, 5))
     a = np.zeros_like(grad_output)

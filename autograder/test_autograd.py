@@ -21,6 +21,7 @@ def test_add_operation():
     assert len(autograd_engine.operation_list) == 1
     
     operation = autograd_engine.operation_list[0]
+    
     assert type(operation) == Operation
 
     assert len(operation.inputs) == 2

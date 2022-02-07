@@ -23,7 +23,7 @@ def test_softmaxXentropy_forward():
     # Torch input
     torch_l1 = torch.nn.Linear(5,5)
     torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W))
-    torch_l1.bias = torch.nn.Parameter(torch.DoubleTensor(l1.b))
+    torch_l1.bias = torch.nn.Parameter(torch.DoubleTensor(l1.b.squeeze()))
     torch_x = torch.DoubleTensor(x)
     torch_y = torch.LongTensor(np.array([2]))
     torch_l1_out = torch_l1(torch_x)
@@ -50,7 +50,7 @@ def test_softmaxXentropy_backward():
     # Torch input
     torch_l1 = torch.nn.Linear(5,5)
     torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W))
-    torch_l1.bias = torch.nn.Parameter(torch.DoubleTensor(l1.b))
+    torch_l1.bias = torch.nn.Parameter(torch.DoubleTensor(l1.b.squeeze()))
     torch_x = torch.DoubleTensor(x)
     torch_y = torch.LongTensor(np.array([2])) 
     torch_l1_out = torch_l1(torch_x)
@@ -66,6 +66,6 @@ def test_softmaxXentropy_backward():
 
     compare_np_torch(a1_out, torch_a1_out)
     compare_np_torch(l1.dW, torch_l1.weight.grad)
-    compare_np_torch(l1.db, torch_l1.bias.grad)
+    compare_np_torch(l1.db.squeeze(), torch_l1.bias.grad)
     
     return True

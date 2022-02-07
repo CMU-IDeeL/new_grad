@@ -16,7 +16,7 @@ def test_linear_layer_forward():
     
     torch_l1 = torch.nn.Linear(5, 5)
     torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W))
-    torch_l1.bias = torch.nn.Parameter(torch.DoubleTensor(l1.b))
+    torch_l1.bias = torch.nn.Parameter(torch.DoubleTensor(l1.b.squeeze()))
     torch_x = torch.DoubleTensor(x)
     torch_l1_out = torch_l1(torch_x)
 
@@ -34,13 +34,13 @@ def test_linear_layer_backward():
     
     torch_l1 = torch.nn.Linear(5, 5)
     torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W))
-    torch_l1.bias = torch.nn.Parameter(torch.DoubleTensor(l1.b))
+    torch_l1.bias = torch.nn.Parameter(torch.DoubleTensor(l1.b.squeeze()))
     torch_x = torch.DoubleTensor(x)
     torch_l1_out = torch_l1(torch_x)
     torch_l1_out.sum().backward()
 
     compare_np_torch(l1.dW, torch_l1.weight.grad)
-    compare_np_torch(l1.db, torch_l1.bias.grad)
+    compare_np_torch(l1.db.squeeze(), torch_l1.bias.grad)
     return True
 
 
@@ -58,7 +58,7 @@ def test_linear_skip_forward():
 
     torch_l1 = torch.nn.Linear(5, 5)
     torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W))
-    torch_l1.bias = torch.nn.Parameter(torch.DoubleTensor(l1.b))
+    torch_l1.bias = torch.nn.Parameter(torch.DoubleTensor(l1.b.squeeze()))
 
     torch_x = torch.DoubleTensor(x)
     torch_x.requires_grad = True
@@ -86,7 +86,7 @@ def test_linear_skip_backward():
 
     torch_l1 = torch.nn.Linear(5, 5)
     torch_l1.weight = torch.nn.Parameter(torch.DoubleTensor(l1.W))
-    torch_l1.bias = torch.nn.Parameter(torch.DoubleTensor(l1.b))
+    torch_l1.bias = torch.nn.Parameter(torch.DoubleTensor(l1.b.squeeze()))
 
     torch_x = torch.DoubleTensor(x)
     torch_x.requires_grad = True
@@ -97,6 +97,6 @@ def test_linear_skip_backward():
 
     compare_np_torch(l1_out, torch_l1_out)
     compare_np_torch(l1.dW, torch_l1.weight.grad)
-    compare_np_torch(l1.db, torch_l1.bias.grad)
+    compare_np_torch(l1.db.squeeze(), torch_l1.bias.grad)
     compare_np_torch(autograd.memory_buffer.get_param(x), torch_x.grad)  # skip connections work'''
     return True
