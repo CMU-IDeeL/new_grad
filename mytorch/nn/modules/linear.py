@@ -1,12 +1,12 @@
 import numpy as np
-from mytorch.nn.functional import matmul_backward, add_backward
+from mytorch.nn.functional import matmul_backward, add_backward, outer_backward
 
 class Linear():
     def __init__(self, in_features, out_features, autograd_engine):
         self.W = np.random.uniform(-np.sqrt(1 / in_features), np.sqrt(1 / in_features),
-                                   size=(in_features, out_features))  # flip this to out x in to mimic pytorch
+                                   size=(out_features, in_features))  # flip this to out x in to mimic pytorch
         self.b = np.random.uniform(-np.sqrt(1 / in_features), np.sqrt(1 / in_features),
-                                   size=(1, out_features))  # just change this to 1-d after implementing broadcasting
+                                   size=(out_features, 1))  # just change this to 1-d after implementing broadcasting
         self.dW = np.zeros(self.W.shape)
         self.db = np.zeros(self.b.shape)
                 
