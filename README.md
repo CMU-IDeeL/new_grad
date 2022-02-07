@@ -39,5 +39,5 @@ Once you have completed all the key components of the assignment, you will be ab
 >>> loss.backward()
 ```
  -------------------------
- Developed by: Kinori Rosnow, Anurag Katakkar, David Park, Shriti Priya, Shayeree Sarkar, and Bhiksha Raj.
+ Developed by: Kinori Rosnow, Anurag Katakkar, David Park, Chaoran Zhang, Shriti Priya, Shayeree Sarkar, and Bhiksha Raj.
  
