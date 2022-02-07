@@ -12,8 +12,8 @@ Mathematical Functionalities
         in the first bonus.
 ''' 
 def add_backward(grad_output, a, b):
-    a_grad = grad_output
-    b_grad = grad_output
+    a_grad = grad_output * np.ones(a.shape)
+    b_grad = grad_output * np.ones(b.shape)
     return a_grad, b_grad
 
 def sub_backward(grad_output, a, b):
